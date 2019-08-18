@@ -1,6 +1,7 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
+
+		<image v-if="show" class="logo animated bounceIn fast" src="/static/logo.png"></image>
 		<view class="text-area">
 			<text class="title">{{title}}</text>
 		</view>
@@ -11,6 +12,7 @@
 	export default {
 		data() {
 			return {
+				show:true,
 				title: 'Hello'
 			}
 		},

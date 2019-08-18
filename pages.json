@@ -7,10 +7,14 @@
 			}
 		}
 	],
+	// 全局配置
 	"globalStyle": {
+		// 导航栏背景颜色
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+		"navigationBarTitleText": "小米商城",
+		"navigationBarBackgroundColor": "#FFF",
+		"backgroundColor": "#FFF"
+	},
+	// 底部导肮
+	 
 }

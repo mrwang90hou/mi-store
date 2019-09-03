@@ -21,6 +21,8 @@
 	@import "common/animate.css";
 	/* 自定义图标库 */
 	@import "common/icon.css";
+	/* ui基础库 */
+	@import url("common/zcm-main.css");
 	/* 公共样式 */
 	@import "common/common.css";
 	

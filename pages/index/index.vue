@@ -1,10 +1,9 @@
 <template>
 	<view class="content">
 
-		<image v-if="show" class="logo animated bounceIn fast" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+		<view style="font-size: 90upx;" class="iconfont icon-wode"></view>
+
+
 	</view>
 </template>
 

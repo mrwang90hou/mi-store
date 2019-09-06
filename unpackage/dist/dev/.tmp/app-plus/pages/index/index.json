@@ -1,3 +1,32 @@
 {
+  "scrollIndicator": "none",
+  "titleNView": {
+    "searchInput": {
+      "align": "left",
+      "backgroundColor": "#f7f7f7",
+      "borderRadius": "4px",
+      "disabled": "true",
+      "placeholder": "智能机木 越野四驱车",
+      "placeholderColor": "#ccc"
+    },
+    "buttons": [
+      {
+        "color": "#989898",
+        "colorPressed": "#FD6801",
+        "float": "left",
+        "fontSize": "22px",
+        "fontSrc": "/static/font/iconfont.tff",
+        "text": "/ue67a"
+      },
+      {
+        "color": "#989898",
+        "colorPressed": "#FD6801",
+        "float": "right",
+        "fontSize": "22px",
+        "fontSrc": "/static/font/iconfont.tff",
+        "text": "/ue661"
+      }
+    ]
+  },
   "usingComponents": {}
 }

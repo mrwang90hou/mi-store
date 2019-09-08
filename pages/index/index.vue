@@ -1,153 +1,235 @@
 <template>
-	<view >
-	
-		<!-- 轮播图组件 ! -->
-		<swiper-image :resdata="swipers" />
-	
-		<!-- 首页分类 ! -->
-		<index-nav :resdata="indexNvas" />
+	<view class="uni-tab-bar">
+		<!-- 横向滚动导航部分 -->
+		<scroll-view id="tab-bar" class="uni-swiper-tab" scroll-x :scroll-left="scrollLeft">
+			<view v-for="(tab,index) in tabBars" :key="tab.id" class="swiper-tab-list" :class="tabIndex==index ? 'active' : ''"
+			 :id="tab.id" :data-current="index" @click="tapTab">{{tab.name}}</view>
+		</scroll-view>
 		
-		<!-- 全局分割线 -->
-		<divider />
-		
-		<!-- 三图广告 -->
-	 	<three-adv :resdata="threeAdv" />
-		
-		<!-- 全局分割线 -->
-		<divider />
-		
-		<!-- 卡片组件 -->
-		<!-- 大图广告位 -->
-		<card headerTitle="每日精选" bodyCover="../../static/images/demo/demo4.jpg" />
-		<!-- <card :showHead="false">
-			<block slot="title"></block>			
-			<image src="/static/images/bg.jpg" mode="widthFix"></image>
-		</card> -->
-		
-		<!-- 公共列表组件 (750 - 5) / 2 = 372.5upx -->
-		<view class="row j-sb">
-			<block v-for="(item,index) in commonList" :key="index">
-				<common-list :item="item" :index="index"></common-list>
-			</block>
-		</view>
-		
-		
-		
+		<!-- 内容 -->
+		<swiper :current="tabIndex" class="swiper-box" :duration="300" @change="changeTab">
+			<swiper-item v-for="(tab,index1) in newsitems" :key="index1">
+				<scroll-view class="list" scroll-y @scrolltolower="loadMore(index1)">
+					<block v-for="(newsitem,index2) in tab.data" :key="index2">
+						<media-list :options="newsitem" @close="close(index1,index2)" @click="goDetail(newsitem)"></media-list>
+					</block>
+					<view class="uni-tab-bar-loading">
+						{{tab.loadingText}}
+					</view>
+				</scroll-view>
+			</swiper-item>
+		</swiper>
 	</view>
 </template>
-
 <script>
-	import swiperImage from '@/components/index/swiper-image.vue'
-	import indexNav from '@/components/index/index-nav.vue'
-	import threeAdv from '@/components/index/three-adv.vue'
-	import card from "@/components/common/card.vue"
-	import commonList from '@/components/common/common-list.vue'
+	import mediaList from '@/components/mediaList.vue';
 
-	
+	const tpl = {
+		data0: {
+			"datetime": "40分钟前",
+			"article_type": 0,
+			"title": "uni-app行业峰会频频亮相，开发者反响热烈!",
+			"source": "DCloud",
+			"comment_count": 639
+		},
+		data1: {
+			"datetime": "一天前",
+			"article_type": 1,
+			"title": "DCloud完成B2轮融资，uni-app震撼发布!",
+			"image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg?imageView2/3/w/200/h/100/q/90",
+			"source": "DCloud",
+			"comment_count": 11395
+		},
+		data2: {
+			"datetime": "一天前",
+			"article_type": 2,
+			"title": "中国技术界小奇迹：HBuilder开发者突破200万",
+			"image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg?imageView2/3/w/200/h/100/q/90",
+			"source": "DCloud",
+			"comment_count": 11395
+		},
+		data3: {
+			"article_type": 3,
+			"image_list": [{
+				"url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg?imageView2/3/w/200/h/100/q/90",
+				"width": 563,
+				"height": 316
+			}, {
+				"url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/muwu.jpg?imageView2/3/w/200/h/100/q/90",
+				"width": 641,
+				"height": 360
+			}, {
+				"url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/shuijiao.jpg?imageView2/3/w/200/h/100/q/90",
+				"width": 640,
+				"height": 360
+			}],
+			"datetime": "5分钟前",
+			"title": "uni-app 支持使用 npm 安装第三方包，生态更趋丰富",
+			"source": "DCloud",
+			"comment_count": 11
+		},
+		data4: {
+			"datetime": "2小时前",
+			"article_type": 4,
+			"title": "uni-app 支持原生小程序自定义组件，更开放、更自由",
+			"image_url": "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/cbd.jpg?imageView2/3/w/200/h/100/q/90",
+			"source": "DCloud",
+			"comment_count": 69
+		}
+	};
+
 	export default {
 		components: {
-			swiperImage,
-			indexNav,
-			threeAdv,
-			card,
-			commonList
+			mediaList
 		},
 		data() {
 			return {
-				// 轮播图数据
-				swipers:[
-					{src:"../../static/images/demo/demo4.jpg"},
-					{src:"../../static/images/demo/demo4.jpg"},
-					{src:"../../static/images/demo/demo4.jpg"}
-				],
-				indexNvas:[
-					{src:"../../static/images/indexnav/1.png",text:"新品发布"},
-					{src:"../../static/images/indexnav/2.gif",text:"小米众筹"},
-					{src:"../../static/images/indexnav/3.gif",text:"以旧换新"},
-					{src:"../../static/images/indexnav/4.gif",text:"一分拼团"},
-					{src:"../../static/images/indexnav/5.gif",text:"超值特卖"},
-					{src:"../../static/images/indexnav/6.gif",text:"小米秒杀"},
-					{src:"../../static/images/indexnav/7.gif",text:"真心想要"},
-					{src:"../../static/images/indexnav/8.gif",text:"电视热卖"},
-					{src:"../../static/images/indexnav/9.gif",text:"家电热卖"},
-					{src:"../../static/images/indexnav/10.gif",text:"米粉卡"},
-				],
-				threeAdv:{
-					big:{
-						src:"/static/images/demo/demo1.jpg"
-					},
-					smallTop:{
-						src:"/static/images/demo/demo2.jpg"
-					},
-					smallBottom:{
-						src:"/static/images/demo/demo2.jpg"
-					}
-				},
-				commonList:[
-					{
-						cover:"../../static/images/demo/list/1.jpg",
-						title:"米家空调",
-						desc:"1.5匹变频",
-						oprice:2699,
-						pprice:1399
-					},
-					{
-						cover:"../../static/images/demo/list/1.jpg",
-						title:"米家空调",
-						desc:"1.5匹变频",
-						oprice:2699,
-						pprice:1399
-					},
-					{
-						cover:"../../static/images/demo/list/1.jpg",
-						title:"米家空调",
-						desc:"1.5匹变频",
-						oprice:2699,
-						pprice:1399
-					},
-					{
-						cover:"../../static/images/demo/list/1.jpg",
-						title:"米家空调",
-						desc:"1.5匹变频",
-						oprice:2699,
-						pprice:1399
-					},
-				]
+				scrollLeft: 0,
+				isClickChange: false,
+				tabIndex: 0,
+				newsitems: [],
+				tabBars: [{
+					name: '关注',
+					id: 'guanzhu'
+				}, {
+					name: '推荐',
+					id: 'tuijian'
+				}, {
+					name: '体育',
+					id: 'tiyu'
+				}, {
+					name: '热点',
+					id: 'redian'
+				}, {
+					name: '财经',
+					id: 'caijing'
+				}, {
+					name: '娱乐',
+					id: 'yule'
+				}, {
+					name: '军事',
+					id: 'junshi'
+				}, {
+					name: '历史',
+					id: 'lishi'
+				}, {
+					name: '本地',
+					id: 'bendi'
+				}]
 			}
 		},
 		onLoad() {
-
+			this.newsitems = this.randomfn()
 		},
 		methods: {
+			goDetail(e) {
+				uni.navigateTo({
+					url: '/pages/template/tabbar/detail/detail?title=' + e.title
+				});
+			},
+			close(index1, index2) {
+				uni.showModal({
+					content: '是否删除本条信息？',
+					success: (res) => {
+						if (res.confirm) {
+							this.newsitems[index1].data.splice(index2, 1);
+						}
+					}
+				})
+			},
+			loadMore(e) {
+				setTimeout(() => {
+					this.addData(e);
+				}, 1200);
+			},
+			addData(e) {
+				if (this.newsitems[e].data.length > 30) {
+					this.newsitems[e].loadingText = '没有更多了';
+					return;
+				}
+				for (let i = 1; i <= 10; i++) {
+					this.newsitems[e].data.push(tpl['data' + Math.floor(Math.random() * 5)]);
+				}
+			},
+			async changeTab(e) {
+				let index = e.target.current;
+				if (this.newsitems[index].data.length === 0) {
+					this.addData(index)
+				}
+				if (this.isClickChange) {
+					this.tabIndex = index;
+					this.isClickChange = false;
+					return;
+				}
+				let tabBar = await this.getElSize("tab-bar"),
+					tabBarScrollLeft = tabBar.scrollLeft;
+				let width = 0;
 
+				for (let i = 0; i < index; i++) {
+					let result = await this.getElSize(this.tabBars[i].id);
+					width += result.width;
+				}
+				let winWidth = uni.getSystemInfoSync().windowWidth,
+					nowElement = await this.getElSize(this.tabBars[index].id),
+					nowWidth = nowElement.width;
+				if (width + nowWidth - tabBarScrollLeft > winWidth) {
+					this.scrollLeft = width + nowWidth - winWidth;
+				}
+				if (width < tabBarScrollLeft) {
+					this.scrollLeft = width;
+				}
+				this.isClickChange = false;
+				this.tabIndex = index; //一旦访问data就会出问题
+			},
+			getElSize(id) { //得到元素的size
+				return new Promise((res, rej) => {
+					uni.createSelectorQuery().select("#" + id).fields({
+						size: true,
+						scrollOffset: true
+					}, (data) => {
+						res(data);
+					}).exec();
+				})
+			},
+			async tapTab(e) { //点击tab-bar
+				let tabIndex = e.target.dataset.current;
+				if (this.newsitems[tabIndex].data.length === 0) {
+					this.addData(tabIndex)
+				}
+				if (this.tabIndex === tabIndex) {
+					return false;
+				} else {
+					let tabBar = await this.getElSize("tab-bar"),
+						tabBarScrollLeft = tabBar.scrollLeft; //点击的时候记录并设置scrollLeft
+					this.scrollLeft = tabBarScrollLeft;
+					this.isClickChange = true;
+					this.tabIndex = tabIndex;
+				}
+			},
+			randomfn() {
+				let ary = [];
+				for (let i = 0, length = this.tabBars.length; i < length; i++) {
+					let aryItem = {
+						loadingText: '加载更多...',
+						data: []
+					};
+					if (i < 1) {
+						for (let j = 1; j <= 10; j++) {
+							aryItem.data.push(tpl['data' + Math.floor(Math.random() * 5)]);
+						}
+					}
+					ary.push(aryItem);
+				}
+				return ary;
+			}
 		}
 	}
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200upx;
-		width: 200upx;
-		margin-top: 200upx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50upx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36upx;
-		color: #8f8f94;
+	.uni-tab-bar-loading {
+		text-align: center;
+		font-size: 28upx;
+		color: #999;
 	}
 </style>

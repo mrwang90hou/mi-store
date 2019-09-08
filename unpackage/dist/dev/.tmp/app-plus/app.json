@@ -50,7 +50,7 @@
     "autoclose": false
   },
   "appname": "MI-Store",
-  "compilerVersion": "2.2.2",
+  "compilerVersion": "2.2.4",
   "usingComponents": {
     "divider": "/components/common/divider"
   }

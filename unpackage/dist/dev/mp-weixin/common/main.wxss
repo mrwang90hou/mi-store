@@ -1131,17 +1131,17 @@ radio-group label, checkbox-group label{
 	white-space: nowrap;
 	line-height: 100rpx;
 	height: 100rpx;
-	border-bottom: 1px solid #c8c7cc;
+	/* border-bottom: 1px solid #c8c7cc; */
 }
 .swiper-tab-list {
 	font-size: 30rpx;
-	width: 150rpx;
+	width: 100rpx;
 	display: inline-block;
 	text-align: center;
 	color: #555;
 }
 .uni-tab-bar .active {
-	color: #007AFF;
+	color: #FD6801;
 }
 .uni-tab-bar .swiper-box {
 	-webkit-box-flex: 1;

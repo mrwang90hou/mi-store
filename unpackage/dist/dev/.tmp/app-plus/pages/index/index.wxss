@@ -4,4 +4,12 @@
 	font-size: 28rpx;
 	color: #999;
 }
+.tabitems {
+	display: inline-block;
+	width: 75rpx;
+	border-bottom: 5rpx solid rgba(0, 0, 0, 0);
+}
+.active .tabitems {
+	border-bottom: 5rpx solid #fd6801;
+}
 

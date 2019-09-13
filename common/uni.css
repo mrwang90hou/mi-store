@@ -863,12 +863,11 @@ radio-group label, checkbox-group label{
 	display: inline-block;
 	text-align: center;
 	color: #555;
-	border-bottom:5upx solid rgba(0,0,0,0);
+	
 }
 
 .uni-tab-bar .active {
 	color: #FD6801;
-	border-bottom:5upx solid #FD6801;
 }
 
 .uni-tab-bar .swiper-box {

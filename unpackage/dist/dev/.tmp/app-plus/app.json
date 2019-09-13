@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/cart/cart",
     "pages/class/class",
     "pages/my/my"
@@ -43,6 +42,46 @@
       }
     ]
   },
+  "nvue": {
+    "pages": {
+      "pages/index/index.html": {
+        "window": {
+          "usingComponents": {},
+          "scrollIndicator": "none",
+          "titleNView": {
+            "searchInput": {
+              "align": "left",
+              "backgroundColor": "#f7f7f7",
+              "borderRadius": "4px",
+              "disabled": "true",
+              "placeholder": "智能机木 越野四驱车",
+              "placeholderColor": "#ccc"
+            },
+            "buttons": [
+              {
+                "color": "#989898",
+                "colorPressed": "#FD6801",
+                "float": "left",
+                "fontSize": "22px",
+                "fontSrc": "/static/font/iconfont.ttf",
+                "text": ""
+              },
+              {
+                "color": "#989898",
+                "colorPressed": "#FD6801",
+                "float": "right",
+                "fontSize": "22px",
+                "fontSrc": "/static/font/iconfont.ttf",
+                "text": ""
+              }
+            ]
+          }
+        },
+        "nvue": true
+      }
+    },
+    "entryPagePath": "pages/index/index"
+  },
   "nvueCompiler": "weex",
   "renderer": "auto",
   "splashscreen": {
@@ -50,7 +89,7 @@
     "autoclose": false
   },
   "appname": "MI-Store",
-  "compilerVersion": "2.2.4",
+  "compilerVersion": "2.2.5",
   "usingComponents": {
     "divider": "/components/common/divider"
   }

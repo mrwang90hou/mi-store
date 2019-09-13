@@ -1,5 +1,15 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/main"],[
-/* 0 */,
+/* 0 */
+/*!*************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/WebProject/VueProject/uni-app/MI-Store/main.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 4);\nvar _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 3));\nvar _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}\n\n_vue.default.config.productionTip = false;\n\n\n// 引入全局组件 --分割线--\nvar divider = function divider() {return __webpack_require__.e(/*! import() | components/common/divider */ \"components/common/divider\").then(__webpack_require__.bind(null, /*! @/components/common/divider.vue */ 30));};\n_vue.default.component(\"divider\", divider);\n\n_App.default.mpType = 'app';\n\nvar app = new _vue.default(_objectSpread({},\n_App.default));\n\ncreateApp(app).$mount();\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ 1)[\"createApp\"]))//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbbnVsbF0sIm5hbWVzIjpbIlZ1ZSIsImNvbmZpZyIsInByb2R1Y3Rpb25UaXAiLCJjb21wb25lbnQiLCJkaXZpZGVyIiwiQXBwIiwibXBUeXBlIiwiYXBwIiwiJG1vdW50Il0sIm1hcHBpbmdzIjoiaURBQUE7QUFDQTtBQUNBLHVFOztBQUVBQSxhQUFJQyxNQUFKLENBQVdDLGFBQVgsR0FBMkIsS0FBM0I7OztBQUdBOztBQUVBRixhQUFJRyxTQUFKLENBQWMsU0FBZCxFQUF3QkMsT0FBeEI7O0FBRUFDLGFBQUlDLE1BQUosR0FBYSxLQUFiOztBQUVBLElBQU1DLEdBQUcsR0FBRyxJQUFJUCxZQUFKO0FBQ0xLLFlBREssRUFBWjs7QUFHQSxVQUFBRSxHQUFHLEVBQUNDLE1BQUosRyIsImZpbGUiOiIwLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0ICd1bmktcGFnZXMnO1xyXG5pbXBvcnQgVnVlIGZyb20gJ3Z1ZSdcclxuaW1wb3J0IEFwcCBmcm9tICcuL0FwcCdcclxuXHJcblZ1ZS5jb25maWcucHJvZHVjdGlvblRpcCA9IGZhbHNlXHJcblxyXG5cclxuLy8g5byV5YWl5YWo5bGA57uE5Lu2IC0t5YiG5Ymy57q/LS1cclxuaW1wb3J0IGRpdmlkZXIgZnJvbSBcIkAvY29tcG9uZW50cy9jb21tb24vZGl2aWRlci52dWVcIlxyXG5WdWUuY29tcG9uZW50KFwiZGl2aWRlclwiLGRpdmlkZXIpXHJcblxyXG5BcHAubXBUeXBlID0gJ2FwcCdcclxuXHJcbmNvbnN0IGFwcCA9IG5ldyBWdWUoe1xyXG4gICAgLi4uQXBwXHJcbn0pXHJcbmFwcC4kbW91bnQoKSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///0\n");
+
+/***/ }),
 /* 1 */,
 /* 2 */,
 /* 3 */,

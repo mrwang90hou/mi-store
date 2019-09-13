@@ -1,0 +1,29 @@
+<template>
+	<div>
+		<!-- nvue是基于weex引擎打造，使用原生开发，提高app端性能 -->
+		<text>1234</text>
+		<div>erewrwr</div>
+		<list>
+			
+		    <cell v-for="(item,index) in lists" :key="index">
+				<div style="border:1px solid red;border-color:#000000;border-width:1px;height: 20px;margin:20px;">
+					<text >{{item}}</text>
+				</div>
+		    </cell> 
+		  </list>
+	</div>
+</template>
+
+<script>
+	export default {
+		 data () {
+		      return {
+		        lists: ['A', 'B', 'C', 'D', 'E']
+		      }
+		    }
+	}
+</script>
+
+<style>
+
+</style>

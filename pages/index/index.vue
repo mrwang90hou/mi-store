@@ -284,6 +284,15 @@ export default {
 					.exec();
 			});
 		},
+		created(){
+			console.log("生命周期，创建完成")
+			
+			uni.onNavigationBarSearchInputClicked(()=>{
+				uni.navigateTo({
+					url:"../search/search"
+				})
+			})
+		},
 		async tapTab(e) {
 			//点击tab-bar
 			let tabIndex = e;

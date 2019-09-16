@@ -48,6 +48,33 @@
             "path" : "pages/my/my",
             "style" : {}
         }
+        ,{
+            "path" : "pages/search/search",
+            "style": {
+            	"app-plus":{
+            		"scrollIndicator":"none", // 不出现滚动条
+            		"titleNView":{
+            			"searchInput":{
+            				"align":"left",
+            				"backgroundColor":"#f7f7f7",
+            				"borderRadius":"4px",
+            				"disabled":"false",
+            				"placeholder":"智能机木 越野四驱车",
+            				"placeholderColor":"#ccc"
+            			},
+            			"buttons":[
+            				{
+            					"color":"#989898",
+            					"colorPressed":"#FD6801",
+            					"float":"right",
+            					"fontSize":"16px",
+            					"text":"搜索"
+            				}
+            			]
+            		}
+            	}
+            }
+        }
     ],
 	// 全局配置
 	"globalStyle": {

@@ -1,0 +1,53 @@
+<template>
+	<div>
+		<!-- nvue是基于weex引擎打造，使用原生开发，提高app端性能 -->
+		<text>1234</text>
+		<div>erewrwr</div>
+		<list>
+			<!-- refresh 下拉触发 -->
+			<!-- pullingdown 下拉多少 -->
+			<refresh style="height:80px;" @refresh="refresh"
+			 @pullingdown="pullingdown"
+			 :display="show"><text>{{refreshtext}}</text></refresh>
+			<cell v-for="(item, index) in lists" :key="index">
+				<div style="border:1px solid red;border-color:#000000;border-width:1px;height: 20px;margin:20px;">
+					<text>{{ item }}</text>
+				</div>
+			</cell>
+		</list>
+	</div>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			show: false,
+			refreshtext:"下拉刷新",
+			lists: ['A', 'B', 'C', 'D', 'E']
+		};
+	},
+	methods:{
+		// 执行刷新
+		refresh(e){
+			this.show = 'show'
+			this.refreshtext = "正在刷新..."
+			setTimeout(()=>{
+				this.show = 'hide'
+				this.refreshtext = "正在刷新"
+			},1200)
+		},
+		// 判断下拉刷新状态
+		pullingdown(e){
+			// 下拉的距离大于下拉刷新的组件高度时，显示不同状态
+			if(e.pullingDistance > e.viewHeight){
+				this.refreshtext = "释放刷新"
+			}else{
+				this.refreshtext = "下拉刷新"
+			}
+		}
+	}
+};
+</script>
+
+<style></style>

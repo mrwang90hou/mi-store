@@ -288,6 +288,7 @@ export default {
 			console.log("生命周期，创建完成")
 			
 			uni.onNavigationBarSearchInputClicked(()=>{
+				console.log("111")
 				uni.navigateTo({
 					url:"../search/search"
 				})
